@@ -59,6 +59,7 @@ const SwissController = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('posting data')
 
     setGameDetails({...gameDetails,
       tournamentName: tournamentRef.current.value,
@@ -66,6 +67,9 @@ const SwissController = (props) => {
       rounds: rounds.current.value,
       prizeAmount: prize.current.value
     })
+    setTimeout(() => {
+      console.log(gameDetails, "the posted game Details")
+    }, 2000)
   }
 
   const handleAddPlayer = (e) => {
@@ -147,6 +151,8 @@ const SwissController = (props) => {
         [firstOpponent]: 0,
         [secondOpponent]: 0
       })
+      //Posting tournament & player details
+      console.log("Starting Swiss Tournament", gameDetails, playerInfo);
     }
 
     setPairs(newPairs);
@@ -194,10 +200,18 @@ const SwissController = (props) => {
       setGameDetails({ ...gameDetails, winner: pairs[0][0] })
     }
 
-    // PUT request for winner and latest scores
-    // add first(.50), second(.30), third(.20) place winners with their prize amount
+  const postToDatabase = (data) => {
+    if (postedToDatabase === false)  {
+      console.log('this is what i am sending:', data)
+      axios.post('/swiss/tournament', data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log("posting error", err);
+      })
+    }
   }
-
   return (
     <Container maxWidth="lg" className="swissPairing">
       <h2>Swiss Tournament</h2>
@@ -208,20 +222,22 @@ const SwissController = (props) => {
           <h4>{gameDetails.prizeAmount ? `$${gameDetails.prizeAmount}` : ''} </h4>
           {console.log('prizeAmount:', gameDetails.prizeAmount)}
         </div>
+      {!gameDetails.tournamentName && !gameDetails.rounds ?
       <form noValidate autoComplete="off" onSubmit={handleSubmit} className="setup-form">
         <h3>Add your tournament details:</h3>
         <TextField label="tournament name" size="small" inputRef={tournamentRef} variant="filled" />
         <TextField label="game name" size="small" inputRef={game} variant="filled" />
         <TextField label="number of rounds" size="small" inputRef={rounds} variant="filled" />
         <Button variant="contained" type="submit">Submit</Button>
-      </form>
+      </form> : null }
+
       {
         gameDetails.rounds !== ''
           ? <form onSubmit={handleAddPlayer} className="setup-form">
-              <h2>Add the players:</h2>
+              {pairs.length === 0 && <h2>Add the players:</h2> }
               <p>If odd number of players, add player named "Bye". If player gets a bye, give them 1 point for that round.</p>
-              <TextField label="enter player name" variant="filled" size="small" inputRef={players} />
-              <Button variant="contained" type="submit">Submit</Button>
+              {pairs.length === 0 && <TextField label="enter player name" variant="outlined" size="small" inputRef={players} /> }
+              {pairs.length === 0 && <Button variant="contained" type="submit">Submit</Button>}
             </form>
           : ''
       }

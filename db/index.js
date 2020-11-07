@@ -38,7 +38,8 @@ const getNewTournamentId = (callback) => {
     if (err) {
       console.log(err)
     } else {
-      callback(result[0].tournamentId);
+      let id = result[0]["tournamentId"];
+      callback(id);
     }
   });
 }
@@ -113,14 +114,14 @@ const issueWinnings = (name, purse, callback) => {
     .catch((err) => { callback(err); });
 }
 
-// TODO: queries to update tournaments (check with LC about what specifically we want to update), queries to update user W/L (is this by points, by match, or by tournament?)
+// TODO: queries to update tournament (check with LC about what specifically we want to update), queries to update user W/L (is this by points, by match, or by tournament?)
 
 
 // handle winner
 const handleWinner = (id, winner, callback) => {
-  db.collection('tournaments').updateOne({ tournamentId: id }, { $set: { winner: winner } })
-    .then((res) => { callback(res.result); })
-    .catch((err) => { callback(err); });
+  db.collection('tournament').updateOne({tournamentId: id}, {$set: {winner: winner}})
+  .then((res) => {callback(res.result);})
+  .catch((err) => {callback(err);});
 }
 
 const upWins = (winner, callback) => {
