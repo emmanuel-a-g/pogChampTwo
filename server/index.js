@@ -14,6 +14,11 @@ app.use(express.static(DIST_DIR));
 app.use('/api', api)
 // app.use('/dashboard', dashboard)
 app.use('/swiss', swiss);
+app.use("/", (req, res) => {
+  console.log("Still active bro.");
+  res.status(200);
+  return;
+})
 
 app.listen(port, function () {
  console.log('App listening on port: ' + port);

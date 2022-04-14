@@ -28,9 +28,9 @@ const LandingPage = (props) => {
 
 
   return (
-    <Container>
-      <Grid container direction="row" alignItems="center" id="container">
-        <Grid container>
+    <Container spacing={1}>
+      <Grid container spacing={1} direction="row" alignItems="center" id="container">
+        <Grid container spacing={1}>
           <Grid item xs={2} className="sideBar">
             {topInfo ? <SideBar topInfo={topInfo}/> : null}
           </Grid>

@@ -58,7 +58,7 @@ const tournaments = [
 const MainPage = (props) => {
   return (
     <div>
-      <Grid container className="Description">
+      <Grid container spacing={1} className="Description">
         <Grid item xs={12} >
           <Carousel animation="slide" interval={6000}>
             {
@@ -67,8 +67,8 @@ const MainPage = (props) => {
           </Carousel>
         </Grid>
       </Grid>
-      <Grid container className="tournaments">
-        <Grid item xs={12} spacing={1} className="tournamentCarousel">
+      <Grid container spacing={0} className="tournaments">
+        <Grid item xs={12} className="tournamentCarousel">
           <Carousel animation="slide" interval={10000}>
             <Grid container spacing={1}>
               {
@@ -85,7 +85,7 @@ const MainPage = (props) => {
 
 function DescriptionItem(props) {
   return (
-    <Grid container className="carouselItem" style={{ "backgroundImage": props.item.url }}>
+    <Grid container spacing={0} className="carouselItem" style={{ "backgroundImage": props.item.url }}>
       <Paper>
         <Grid item xs={12} id='carouselText'>
           <div className="carousel-inner-text">
