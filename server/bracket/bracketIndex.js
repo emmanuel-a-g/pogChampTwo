@@ -150,13 +150,13 @@ router.put('/finalizeTournament', (req, res) => {
 router.post('/declareWinner', (req, res) => {
   console.log(req.body, 'this is on declare winner');
   let { tournamentId, username, winnings } = req.body;
-  updateWinner(tournamentId, username, winnings)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((error) => {
-      console.log('this is the error', error);
-    })
+  // updateWinner(tournamentId, username, winnings)
+  //   .then((data) => {
+  //     res.send(data);
+  //   })
+  //   .catch((error) => {
+  //     console.log('this is the error', error);
+  //   })
 })
 let players = [{
   "_id" : "5fa5baebafad33b2d8266305",

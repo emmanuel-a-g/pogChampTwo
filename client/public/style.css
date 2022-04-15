@@ -228,3 +228,12 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
   max-width: 138px;
   margin: 13px auto 0px;
 }
+
+@media only screen and (max-width: 800px) {
+  body {
+    font-size: .70rem;
+  }
+  .content {
+    font-size: .70rem;
+  }
+}

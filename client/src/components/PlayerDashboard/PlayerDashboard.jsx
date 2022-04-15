@@ -11,8 +11,6 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PlayerTournamentHistory from './PlayerTournamentHistory/PlayerTournamentHistory.jsx';
-import './PlayerDashboard.css';
-import axios from 'axios';
 
 const useStyles = makeStyles({
   root: {
@@ -26,6 +24,12 @@ const useStyles = makeStyles({
   media: {
     height: 140,
   },
+  big: {
+    color: "black"
+  },
+  small: {
+    fontSize: ".75rem"
+  }
 });
 
 const PlayerDashboard = ({yourName}) => {
@@ -57,6 +61,13 @@ const PlayerDashboard = ({yourName}) => {
     "losses": 1,
     "winnings": 1000
   })
+  const [width, setWidth] = useState(window.innerWidth);
+  const breakpoint = 800;
+  useEffect(() => {
+    const handleWindowResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleWindowResize);
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
 
   // useEffect(() => {
   //   console.log('Getting user dashboard information');
@@ -76,7 +87,7 @@ const PlayerDashboard = ({yourName}) => {
   // }
 
   return (
-    <Container>
+    <Container className="playerContent">
       <Grid container spacing={3}>
         <Grid item xs={4}>
           <Card className={classes.root}>
