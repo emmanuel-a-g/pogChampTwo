@@ -32,7 +32,7 @@ const SwissPlayers = (props) => {
                 <Grid
                   container
                   direction="row"
-                  justify="space-between"
+                  justifyContent="space-between"
                   alignItems="center"
                   key={index}
                   className={player.toLowerCase() === 'bye'
@@ -82,6 +82,7 @@ const SwissPlayers = (props) => {
                             inputRef={listRefs.get(player)}
                           />
                           <Button
+                            disabled={props.firstPairing ? true : false}
                             className="submit-score"
                             color="primary"
                             type="submit"

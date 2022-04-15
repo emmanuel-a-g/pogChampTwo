@@ -2,25 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { Container, TextField, Radio, RadioGroup, FormControlLabel, Button } from '@material-ui/core';
 
 const SignUp = ({ handleModal }) => {
-  handleModal(false);
-
   const [data, useData] = useState({
     username: "",
     password: "",
     type: ""
-  }, () => {
-    console.log(data);
   })
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert(`Sorry, ${data.username} this action is currently not supported!`);
+  }
 
-  useEffect(() => {
-    console.log(data);
-    //
-  })
+  // useEffect(() => {
+  //   console.log(data);
+  //   //
+  // })
 
   return (
     <Container maxWidth="sm" className="signup-form-container">
       <h2>Sign up</h2>
-      <form id="signup">
+      <form id="signup" onSubmit={handleSubmit}>
         <TextField
           onChange={e => {
             useData({...data,
