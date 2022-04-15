@@ -145,6 +145,7 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
           label="# of players, 4-18"
           variant="filled"
           size="small"
+          type="number"
           inputRef={players}
         />
         <TextField

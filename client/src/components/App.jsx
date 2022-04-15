@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom";
+import React, {useEffect} from "react";
+import { BrowserRouter as Router, Switch, Route, Link, useLocation } from "react-router-dom";
 import { Grid, Paper, Modal, TextField } from "@material-ui/core";
 import BracketComponent from "./bracket/BracketComponent.jsx";
 import Footer from "./Footer.jsx";
@@ -10,12 +10,19 @@ import PlayerDashboard from "./PlayerDashboard/PlayerDashboard.jsx";
 import SignIn from "./SignIn.jsx";
 import SignUp from "./SignUp.jsx";
 import SwissController from "./swiss/SwissController.jsx";
+function usePageViews() {
+  // let location = useLocation();
+  // useEffect(() => {
+  //   console.log(locatin.pathname);
+  // }, [location])
+  // return location;
+}
 
 const App = () => {
   const [login, showLogin] = React.useState(false);
   const [showName, setShowName] = React.useState(true);
   const [yourName, setName] = React.useState("");
-  console.log(yourName);
+  usePageViews();
 
   return (
     <Router>
@@ -65,7 +72,7 @@ const App = () => {
 const Name = ({ show, handleShow, yourName, setName }) => {
   //handle submit
   const body = (
-    <div id="loginModal" style={{textAlign: "center"}}>
+    <div id="loginModal">
       <div>Hello, </div>
       <form onSubmit={(e) => {
         e.preventDefault();
@@ -76,12 +83,11 @@ const Name = ({ show, handleShow, yourName, setName }) => {
           type="text"
           name="name"
           onChange={(e) => setName(e.target.value)}
-          style={{ width: "300px", margin: "5px" }}
         />
         <button
           type="submit"
           disabled={false}
-          style={{ width: "100px", backgroundColor: "#ff7f28" }}
+          style={{ backgroundColor: "#ff7f28", marginLeft: "5px"}}
         >
           Submit
         </button>

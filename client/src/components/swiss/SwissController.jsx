@@ -10,6 +10,7 @@ const SwissController = (props) => {
   const [money, setAmount] = useState({});
 
   const [postedToDatabase, setPosted] = useState(false);
+  const [start, setStart] = useState(true); //its inverted
   const [gameDetails, setGameDetails] = useState({
     tournamentName: '',
     gameName: '',
@@ -56,14 +57,18 @@ const SwissController = (props) => {
   const [currentRoundScores, setCurrentRoundScores] = useState({});
   const [firstPairing, setFirstPairing] = useState(true);
 
-  const tournamentRef = useRef(null);
-  const game = useRef(null);
-  const rounds = useRef(null);
-  const players = useRef(null);
-  const prize = useRef(null);
+  const tournamentRef = useRef();
+  const game = useRef();
+  const rounds = useRef();
+  const players = useRef();
+  const prize = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (Number(rounds.current.value) > 20) {
+      alert("No more than 20 rounds allowed!");
+      return;
+    }
 
     setGameDetails({...gameDetails,
       tournamentName: tournamentRef.current.value,
@@ -83,6 +88,11 @@ const SwissController = (props) => {
       for(let i = 1; i <= Number(gameDetails.rounds); i++) {
         roundArray.push(false)
       }
+      if (Object.keys(playerInfo).length < 1) {
+        //cant start yet need 1 more player
+      } else {
+        setStart(false)
+      }
       setRoundWinners({...roundWinners, [playerName]: roundArray})
       setPlayerInfo({...playerInfo, [playerName]: 0})
       setCurrentRoundScores({...currentRoundScores, [playerName]: 0})
@@ -93,7 +103,7 @@ const SwissController = (props) => {
 
   const checkWinners = () => {
     let newRoundWinners = {};
-    let roundsWonObj = {};
+    // let roundsWonObj = {};
 
     let createArray = (roundWinner) => {
       let roundArray = [...roundWinners[roundWinner]];
@@ -133,9 +143,7 @@ const SwissController = (props) => {
       .sort((a, b) => b[1] - a[1]);
 
     if(firstPairing === true) {
-
       // POST request with initial tournament document
-
       setFirstPairing(false)
       transformedArray = randomized;
     } else {
@@ -216,38 +224,10 @@ const SwissController = (props) => {
       }
     }
     setWinners(places)
-    putWinners(places)
-  }
-
-  const putWinners = (places) => {
-    axios.post('swiss/winners', places)
-    .then((res) => {
-      console.log('result', res);
-    })
-    .catch((err) => {
-      console.log('error winners', err);
-    })
   }
 
   const postTournament = () => {
-    if (postedToDatabase === false)  {
-      setPosted(true)
-      let data = {gameDetails, playerInfo}
-      let moneyAmount = gameDetails.prizeAmount;
-      let prize = {
-        first: Math.floor( moneyAmount * .50),
-        second: Math.floor( moneyAmount * .30),
-        third: Math.floor( moneyAmount * .20),
-      }
-      setAmount(prize);
-      axios.post('/swiss/tournament', data)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log("posting error", err);
-        })
-    }
+    console.log("Posting to database..");
   }
   let allDetailsIn = gameDetails.tournamentName.length >= 1 &&
   gameDetails.rounds.length >= 1 && gameDetails.prizeAmount.length >= 1 &&
@@ -265,9 +245,10 @@ const SwissController = (props) => {
       { allDetailsIn ? null :
       <form noValidate autoComplete="off" onSubmit={handleSubmit} className="setup-form">
         <h3>Add your tournament details:</h3>
-        <TextField label="tournament name" size="small" inputRef={tournamentRef} variant="filled" />
-        <TextField label="game name" size="small" inputRef={game} variant="filled" />
-        <TextField label="number of rounds" size="small" inputRef={rounds} variant="filled" />
+        <TextField required label="tournament name" size="small" inputRef={tournamentRef} variant="filled" />
+        <TextField required label="game name" size="small" inputRef={game} variant="filled" />
+        <TextField required type="number" label="number of rounds" size="small" inputRef={rounds} variant="filled" />
+        <TextField required type="number" label="prize amount" size="small" inputRef={prize} variant="filled" />
         <Button variant="contained" type="submit">Submit</Button>
       </form>}
 
@@ -276,6 +257,7 @@ const SwissController = (props) => {
           ? <form onSubmit={handleAddPlayer} className="setup-form">
               {pairs.length === 0 && <h2>Add the players:</h2> }
               <p>If odd number of players, add player named "Bye". If player gets a bye, give them 1 point for that round.</p>
+              <p>At least 2 players to start: </p>
               {gameDetails.winner.length >= 1 && <Button variant="filled" type="submit" onClick={() => window.print()} >Print Results</Button>}
               {pairs.length === 0 && <TextField label="enter player name" variant="filled" size="small" inputRef={players} /> }
               {pairs.length === 0 && <Button variant="contained" color="secondary" type="submit">Submit</Button>}
@@ -316,6 +298,7 @@ const SwissController = (props) => {
                     variant="contained"
                     color="primary"
                     onClick={(e) => { handlePairings(e); postTournament(); }}
+                    disabled={start}
                     className="create-pairings">Create Pairings</Button>
                 : ''
               }
@@ -342,7 +325,8 @@ const SwissController = (props) => {
         setCurrentRoundScores={setCurrentRoundScores}
         setPlayerInfo={setPlayerInfo}
         roundWinners={roundWinners}
-        handlePairings={handlePairings}/>
+        handlePairings={handlePairings}
+        firstPairing={firstPairing}/>
     </Container>
   )
 }
