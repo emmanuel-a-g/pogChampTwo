@@ -17,6 +17,8 @@ import axios from 'axios';
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    display: "flex",
+
   },
   username: {
     textAlign: 'center'
@@ -26,9 +28,9 @@ const useStyles = makeStyles({
   },
 });
 
-const PlayerDashboard = () => {
+const PlayerDashboard = ({yourName}) => {
   const [userData, setUp] = useState({
-    "name" : "rapwnzel",
+    "name" : yourName ? yourName : "Client",
     "attended": [{
       "name" : "My Previous Tournament",
       "prize" : "200",

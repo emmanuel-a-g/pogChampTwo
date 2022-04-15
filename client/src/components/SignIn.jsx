@@ -5,16 +5,15 @@ import { Link } from 'react-router-dom';
 import { Container, Button, TextField } from '@material-ui/core';
 
 const SignIn = (props) => {
-
   const [data, setData] = useState({
     "username": "",
     "password": ""
   })
 
-  useEffect(() => {
-    console.log(data)
-    // axios.post()
-  }, Object.values(data))
+  // useEffect(() => {
+  //   console.log(data)
+  //   // axios.post()
+  // }, Object.values(data))
 
   const encrypt = (password) => {
     let encrypted = window.btoa(password + "salt");
@@ -42,9 +41,9 @@ const SignIn = (props) => {
           let username = values.email;
           let password = encrypt(values.password);
           setTimeout(() => {
-            setData({ username, password });
             setSubmitting(false);
-          }, 400);
+            props.closeModal(false);
+          }, 200);
         }}
       >
         {({

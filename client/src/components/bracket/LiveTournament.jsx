@@ -12,6 +12,8 @@ function LiveTournament({players, prizes, live_image_url, winners}) {
   return (
     <React.Fragment>
       <h1 className="title">Bracket Tournament</h1>
+      {players.length >= 1 && <span>Instructions: click any player's name to move him up the tournament</span> }
+      <br/>
       {live_image_url && players.length >= 1 &&
       <span>
       {players.length === 1 && <button style={styles} onClick={() => window.print()} >Print Results</button> }
@@ -30,7 +32,7 @@ function LiveTournament({players, prizes, live_image_url, winners}) {
 
       { players.length === 0 ?
         <div style={{height: 550}}>
-          <h4 style={{color: "grey"}}>Click "Create New Tournament" to begin</h4>
+          <h4 style={{color: "grey"}}>Click "Create New Tournament" above to begin!</h4>
         </div> : null
       }
     </React.Fragment>

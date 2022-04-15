@@ -36,12 +36,19 @@ const useStyles = makeStyles((theme) => ({
   },
   username: {
     textAlign: "center",
+  },
+  tournamentSelector: {
+    maxWidth: 345,
+    display: "flex",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    height: 200,
   }
 }));
 
-const OrganizerDashboard = (props) => {
+const OrganizerDashboard = ({yourName}) => {
   const [userData, setUserData] = useState({
-    "name": "Grantalf",
+    "name": yourName ? yourName : "Client",
     "upcoming": [{
       "name": "Cool Fun Game Time",
       "date": "11/18/2020",
@@ -108,12 +115,12 @@ const OrganizerDashboard = (props) => {
         </Grid>
 
         <Grid item xs={4}>
-          <Card className={classes.root}>
+          <Card className={classes.tournamentSelector}>
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2" className={classes.username}>
                 Tournament Selector
               </Typography>
-              <CardActions  variant="h5" component="h2">
+              <CardActions variant="h5" component="h2">
                 <Button variant="outlined" className="select-style"><Link to="/bracket">Bracket</Link></Button>
                 <Button variant="outlined" className="select-style"><Link to="/swiss">Swiss</Link></Button>
               </CardActions>

@@ -30,6 +30,7 @@ class BracketComponent extends React.Component {
       prizeAmount: {},
       winners: { "first": {}, "second": {}, "third": [] },
       live_image_url: '',
+      fillFormError: false,
     };
 
     this.postNewParticipants = this.postNewParticipants.bind(this);
@@ -49,7 +50,7 @@ class BracketComponent extends React.Component {
           <Tooltip
             title={
               <React.Fragment>
-                <Typography color="inherit">player information</Typography>
+                <Typography color="inherit">did I win?</Typography>
               </React.Fragment>
             }
           >
@@ -101,6 +102,11 @@ class BracketComponent extends React.Component {
         this.startMatch();
       })
       .catch((err) => {
+        if (err.message) {
+          this.setState({
+            fillFormError: true,
+          })
+        }
         console.log(err);
       });
   }
@@ -220,6 +226,12 @@ class BracketComponent extends React.Component {
     }
   }
 
+  resetDone() {
+    this.setState({
+      fillFormError: false
+    })
+  }
+
   render() {
     let view = this.state.view;
     let players = this.state.players;
@@ -230,6 +242,7 @@ class BracketComponent extends React.Component {
         {view === 0 && <BracketForm
           className="bracketForm"
           startTournament={this.startTournament}
+          fillFormError={this.state.fillFormError}
         />}
         {view === 2 && <LiveTournament players={players} prizes={this.state.prizeAmount}
           winners={this.state.winners} live_image_url={this.state.live_image_url} />}

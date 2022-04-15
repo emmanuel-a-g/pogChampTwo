@@ -21,6 +21,7 @@ router.post('/postParticipant', (req, res) => {
       res.send(result);
     })
     .catch((err) => {
+      res.send(404).json({message: "Error posting participants, try again!"});
       console.log("Error posting participants:", err);
     })
     // .then(() => {
