@@ -25,8 +25,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PlayerTournamentHistory = ({userData}) => {
-  console.log('props:', userData);
-
   const classes = useStyles();
 
   return (

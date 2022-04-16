@@ -74,22 +74,7 @@ const PlayerDashboard = ({ yourName }) => {
     return () => window.removeEventListener('resize', handleWindowResize)
   }, [])
 
-  // useEffect(() => {
-  //   console.log('Getting user dashboard information');
-  //   getUserData()
-  // }, []);
   const classes = useStyles()
-
-  // const getUserData = () => {
-  //   axios.get('/dashboard/player')
-  //   .then((res) => {
-  //     console.log('Getting Player data from DB');
-  //     setUp(res.data);
-  //   })
-  //   .catch((err)=> {
-  //     console.log('Error geting player data', err)
-  //   })
-  // }
 
   return (
     <Container className="playerContent">
