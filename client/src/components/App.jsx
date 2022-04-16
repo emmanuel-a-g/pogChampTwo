@@ -10,23 +10,12 @@ import PlayerDashboard from "./PlayerDashboard/PlayerDashboard.jsx";
 import SignIn from "./SignIn.jsx";
 import SignUp from "./SignUp.jsx";
 import SwissController from "./swiss/SwissController.jsx";
-function usePageViews() {
-  // let location = useLocation();
-  // useEffect(() => {
-  //   console.log(locatin.pathname);
-  // }, [location])
-  // return location;
-}
 
 const App = () => {
-  // const location = useLocation();
   const [login, showLogin] = React.useState(false);
   const [showName, setShowName] = React.useState(true);
   const [yourName, setName] = React.useState("");
-  // usePageViews();
-  //  until solution it is removed
   // <Name show={showName} handleShow={setShowName} yourName={yourName} setName={setName} />
-  console.log("User: ",yourName);
 
   return (
     <Router>
