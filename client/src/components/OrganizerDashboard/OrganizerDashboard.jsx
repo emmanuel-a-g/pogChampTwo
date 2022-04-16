@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import {
   Button,
   Card,
@@ -8,17 +8,14 @@ import {
   CardMedia,
   Container,
   Grid,
-  Typography
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import {
-  BrowserRouter as Router,
-  Link
-} from "react-router-dom";
-import TournamentHistory from './TournamentHistory/TournamentHistory.jsx';
-import './OrganizerDashboard.css';
-import './TournamentHistory/TournamentHistory.css';
-import axios from 'axios';
+  Typography,
+} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import { BrowserRouter as Router, Link } from 'react-router-dom'
+import TournamentHistory from './TournamentHistory/TournamentHistory.jsx'
+import './OrganizerDashboard.css'
+import './TournamentHistory/TournamentHistory.css'
+import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -30,60 +27,64 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     maxWidth: 345,
-    backgroundColor: "whitesmoke"
+    backgroundColor: 'whitesmoke',
   },
   media: {
     height: 140,
   },
   username: {
-    textAlign: "center",
+    textAlign: 'center',
   },
   tournamentSelector: {
-    maxWidth: 345,
-    display: "flex",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    height: 200,
-    backgroundColor: "whitesmoke"
-  }
-}));
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    height: 300,
+    width: 400,
+    backgroundColor: 'whitesmoke',
+  },
+}))
 
-const OrganizerDashboard = ({yourName}) => {
+const OrganizerDashboard = ({ yourName }) => {
   const [userData, setUserData] = useState({
-    "name": yourName ? yourName : "Client",
-    "upcoming": [{
-      "name": "Cool Fun Game Time",
-      "date": "11/18/2020",
-      "location": "The Basement"
-    },
-    {
-      "name": "Another Fun One",
-      "date": "11/25/2020",
-      "location": "The Basement II"
-    }],
-    "attended": [{
-      "name": "Super Fun Tournament",
-      "game": "Super Smash Bros",
-      "type": "Bracket",
-      "winner": "rapwnzel"
-    },
-    {
-      "name": "Big Words Tournament",
-      "game": "Scrabble",
-      "type": "Swiss",
-      "winner": "leSLAY"
-    }]
-  });
-  const [tournamentStyle, setTournamentStyle] = useState('');
+    name: yourName ? yourName : 'Client',
+    upcoming: [
+      {
+        name: 'Cool Fun Game Time',
+        date: '11/18/2020',
+        location: 'The Basement',
+      },
+      {
+        name: 'Another Fun One',
+        date: '11/25/2020',
+        location: 'The Basement II',
+      },
+    ],
+    attended: [
+      {
+        name: 'Super Fun Tournament',
+        game: 'Super Smash Bros',
+        type: 'Bracket',
+        winner: 'rapwnzel',
+      },
+      {
+        name: 'Big Words Tournament',
+        game: 'Scrabble',
+        type: 'Swiss',
+        winner: 'leSLAY',
+      },
+    ],
+  })
+  const [tournamentStyle, setTournamentStyle] = useState('')
   // useEffect(() => {
   //   getUserData();
   // }, [])
 
-  const classes = useStyles();
+  const classes = useStyles()
 
   const handleTournamentStyleChange = (event) => {
-    setTournamentStyle(event.target.value);
-  };
+    setTournamentStyle(event.target.value)
+  }
 
   // const getUserData = () => {
   //   axios.get('/dashboard/player')
@@ -108,7 +109,12 @@ const OrganizerDashboard = ({yourName}) => {
                 title="Super Smash Bros"
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2" className={classes.username}>
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="h2"
+                  className={classes.username}
+                >
                   {userData.name ? userData.name : null}
                 </Typography>
               </CardContent>
@@ -119,12 +125,21 @@ const OrganizerDashboard = ({yourName}) => {
         <Grid item xs={4}>
           <Card className={classes.tournamentSelector}>
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2" className={classes.username}>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="h2"
+                className={classes.username}
+              >
                 Tournament Selector
               </Typography>
               <CardActions variant="h5" component="h2">
-                <Button variant="contained" style={{backgroundColor: "grey"}}><Link to="/bracket">Bracket</Link></Button>
-                <Button variant="contained" style={{backgroundColor: "grey"}}><Link to="/swiss">Swiss</Link></Button>
+                <Button variant="contained" style={{ backgroundColor: 'grey' }}>
+                  <Link to="/bracket">Bracket</Link>
+                </Button>
+                <Button variant="contained" style={{ backgroundColor: 'grey' }}>
+                  <Link to="/swiss">Swiss</Link>
+                </Button>
               </CardActions>
             </CardContent>
           </Card>
@@ -132,23 +147,27 @@ const OrganizerDashboard = ({yourName}) => {
 
         <Grid item xs={4}>
           <Card className={classes.root}>
-
-            {userData.name ?
+            {userData.name ? (
               <CardContent>
                 <h2>Upcoming Tournaments</h2>
-                {userData.upcoming.map((tournament, index) =>
-                  <Typography key={index} gutterBottom variant="h5" component="h2">
+                {userData.upcoming.map((tournament, index) => (
+                  <Typography
+                    key={index}
+                    gutterBottom
+                    variant="h5"
+                    component="h2"
+                  >
                     {tournament.name} {tournament.date} {tournament.location}
                   </Typography>
-                )}
+                ))}
               </CardContent>
-            : null }
+            ) : null}
           </Card>
         </Grid>
       </Grid>
-      <TournamentHistory userData={userData}/>
+      <TournamentHistory userData={userData} />
     </Container>
-  );
+  )
 }
 
-export default OrganizerDashboard;
+export default OrganizerDashboard

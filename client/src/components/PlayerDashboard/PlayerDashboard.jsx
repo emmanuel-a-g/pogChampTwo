@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import {
   Card,
   CardActionArea,
@@ -7,73 +7,76 @@ import {
   CardMedia,
   Container,
   Grid,
-  Typography
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import PlayerTournamentHistory from './PlayerTournamentHistory/PlayerTournamentHistory.jsx';
+  Typography,
+} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import PlayerTournamentHistory from './PlayerTournamentHistory/PlayerTournamentHistory.jsx'
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
-    display: "flex",
-
+    display: 'flex',
   },
   username: {
-    textAlign: 'center'
+    textAlign: 'center',
   },
   media: {
     height: 140,
   },
   big: {
-    color: "black"
+    color: 'black',
   },
   small: {
-    fontSize: ".75rem"
-  }
-});
+    fontSize: '.75rem',
+  },
+})
 
-const PlayerDashboard = ({yourName}) => {
+const PlayerDashboard = ({ yourName }) => {
   const [userData, setUp] = useState({
-    "name" : yourName ? yourName : "Client",
-    "attended": [{
-      "name" : "My Previous Tournament",
-      "prize" : "200",
-      "date": "09/15/2020",
-      "game":  "Minecraft",
-      "location" : "Houston basement",
-      "type": "Bracket"
-    },
-    {
-      "name" : "Super Fun Tournament",
-      "prize" : "100",
-      "date": "10/25/2020",
-      "game":  "Magic the Gathering",
-      "location" : "The Shop",
-      "type": "Swiss",
-      "result": true
-    }],
-    "upcoming" : [{
-      "name":"Smash Tournament",
-      "date": "11/13/2020",
-      "location": "Josh's backyard"
-    }],
-    "wins": 420,
-    "losses": 1,
-    "winnings": 1000
+    name: yourName ? yourName : 'Client',
+    attended: [
+      {
+        name: 'My Previous Tournament',
+        prize: '200',
+        date: '09/15/2020',
+        game: 'Minecraft',
+        location: 'Houston basement',
+        type: 'Bracket',
+      },
+      {
+        name: 'Super Fun Tournament',
+        prize: '100',
+        date: '10/25/2020',
+        game: 'Magic the Gathering',
+        location: 'The Shop',
+        type: 'Swiss',
+        result: true,
+      },
+    ],
+    upcoming: [
+      {
+        name: 'Smash Tournament',
+        date: '11/13/2020',
+        location: "Josh's backyard",
+      },
+    ],
+    wins: 420,
+    losses: 1,
+    winnings: 1000,
   })
-  const [width, setWidth] = useState(window.innerWidth);
-  const breakpoint = 800;
+  const [width, setWidth] = useState(window.innerWidth)
+  const breakpoint = 800
   useEffect(() => {
-    const handleWindowResize = () => setWidth(window.innerWidth);
-    window.addEventListener("resize", handleWindowResize);
-    return () => window.removeEventListener("resize", handleWindowResize);
-  }, []);
+    const handleWindowResize = () => setWidth(window.innerWidth)
+    window.addEventListener('resize', handleWindowResize)
+    return () => window.removeEventListener('resize', handleWindowResize)
+  }, [])
 
   // useEffect(() => {
   //   console.log('Getting user dashboard information');
   //   getUserData()
   // }, []);
-  const classes = useStyles();
+  const classes = useStyles()
 
   // const getUserData = () => {
   //   axios.get('/dashboard/player')
@@ -98,8 +101,13 @@ const PlayerDashboard = ({yourName}) => {
                 title="Super Smash Bros"
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2" className={classes.username}>
-                  {userData.name ? userData.name : null }
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="h2"
+                  className={classes.username}
+                >
+                  {userData.name ? userData.name : null}
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -109,8 +117,13 @@ const PlayerDashboard = ({yourName}) => {
         <Grid item xs={4}>
           <Card className={classes.root}>
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2" className={classes.username}>
-              {userData.name ? userData.name : null}'s Stats
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="h2"
+                className={classes.username}
+              >
+                {userData.name ? userData.name : null}'s Stats
               </Typography>
               <Typography gutterBottom variant="h5" component="h2">
                 Total Wins: {userData.wins ? userData.wins : null}
@@ -127,22 +140,29 @@ const PlayerDashboard = ({yourName}) => {
 
         <Grid item xs={4}>
           <Card className={classes.root}>
-            {userData.name ?
+            {userData.name ? (
               <CardContent>
                 <h2>Upcoming Tournaments</h2>
-                {userData.upcoming.map((tournament, index) =>
-                  <Typography key={index} gutterBottom variant="h5" component="h2">
-                    {tournament.name ? tournament.name : null} {tournament.date ? tournament.date : null} {tournament.location ? tournament.location : null}
+                {userData.upcoming.map((tournament, index) => (
+                  <Typography
+                    key={index}
+                    gutterBottom
+                    variant="h5"
+                    component="h2"
+                  >
+                    {tournament.name ? tournament.name : null}{' '}
+                    {tournament.date ? tournament.date : null}{' '}
+                    {tournament.location ? tournament.location : null}
                   </Typography>
-                )}
+                ))}
               </CardContent>
-            : null }
+            ) : null}
           </Card>
         </Grid>
       </Grid>
-      <PlayerTournamentHistory userData={userData}/>
+      <PlayerTournamentHistory userData={userData} />
     </Container>
-  );
+  )
 }
 
-export default PlayerDashboard;
+export default PlayerDashboard
