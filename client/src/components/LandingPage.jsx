@@ -18,7 +18,7 @@ const LandingPage = (props) => {
   const showTopFive = () => {
     axios.get('/api/top')
     .then(results => {
-      console.log(results.data);
+      // console.log(results.data);
       setTopInfo(results.data)
     })
     .catch(error => {

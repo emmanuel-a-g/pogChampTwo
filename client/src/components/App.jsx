@@ -19,10 +19,14 @@ function usePageViews() {
 }
 
 const App = () => {
+  // const location = useLocation();
   const [login, showLogin] = React.useState(false);
   const [showName, setShowName] = React.useState(true);
   const [yourName, setName] = React.useState("");
-  usePageViews();
+  // usePageViews();
+  //  until solution it is removed
+  // <Name show={showName} handleShow={setShowName} yourName={yourName} setName={setName} />
+  console.log("User: ",yourName);
 
   return (
     <Router>
@@ -30,7 +34,6 @@ const App = () => {
         <div className="header">
           <Navigation handleLogin={showLogin} />
           <Login show={login} handleShow={showLogin} />
-          <Name show={showName} handleShow={setShowName} yourName={yourName} setName={setName} />
           <ul className="navigation">
             <li>
               <Link to="/">Home</Link>

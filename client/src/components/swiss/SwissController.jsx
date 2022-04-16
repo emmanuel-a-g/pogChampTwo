@@ -9,7 +9,7 @@ const SwissController = (props) => {
   const [winners, setWinners] = useState({});
   const [money, setAmount] = useState({});
 
-  const [postedToDatabase, setPosted] = useState(false);
+  // const [postedToDatabase, setPosted] = useState(false);
   const [start, setStart] = useState(true); //its inverted
   const [gameDetails, setGameDetails] = useState({
     tournamentName: '',
@@ -62,6 +62,11 @@ const SwissController = (props) => {
   const rounds = useRef();
   const players = useRef();
   const prize = useRef();
+
+  const resetPage = (e) => {
+    e.preventDefault();
+    window.location.reload(false);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -227,7 +232,7 @@ const SwissController = (props) => {
   }
 
   const postTournament = () => {
-    console.log("Posting to database..");
+    // console.log("Posting to database..");
   }
   let allDetailsIn = gameDetails.tournamentName.length >= 1 &&
   gameDetails.rounds.length >= 1 && gameDetails.prizeAmount.length >= 1 &&
@@ -235,7 +240,7 @@ const SwissController = (props) => {
 
   return (
     <Container maxWidth="lg" className="swissPairing">
-      <h2>Swiss Tournament</h2>
+      <h2>Swiss Tournament</h2> <Button onClick={resetPage} variant="contained" color="primary">Reset?</Button>
         <div className="game-details">
           {gameDetails.tournamentName ? <h2>{gameDetails.tournamentName}</h2> : ''}
           <h4>{gameDetails.gameName}</h4>

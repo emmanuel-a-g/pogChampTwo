@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     maxWidth: 345,
+    backgroundColor: "whitesmoke"
   },
   media: {
     height: 140,
@@ -43,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-evenly",
     alignItems: "center",
     height: 200,
+    backgroundColor: "whitesmoke"
   }
 }));
 
@@ -121,8 +123,8 @@ const OrganizerDashboard = ({yourName}) => {
                 Tournament Selector
               </Typography>
               <CardActions variant="h5" component="h2">
-                <Button variant="outlined" className="select-style"><Link to="/bracket">Bracket</Link></Button>
-                <Button variant="outlined" className="select-style"><Link to="/swiss">Swiss</Link></Button>
+                <Button variant="contained" style={{backgroundColor: "grey"}}><Link to="/bracket">Bracket</Link></Button>
+                <Button variant="contained" style={{backgroundColor: "grey"}}><Link to="/swiss">Swiss</Link></Button>
               </CardActions>
             </CardContent>
           </Card>

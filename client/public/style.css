@@ -157,7 +157,10 @@ div#loginContainer a {
 #signinButton {
   display: inline;
   float: right;
-  margin: 7px;
+  margin-top: 1%;
+  width: 8rem;
+  height: 25px;
+  font-size: 0.55rem;
 }
 
 #carouselText {
