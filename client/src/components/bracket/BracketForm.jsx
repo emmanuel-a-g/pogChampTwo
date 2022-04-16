@@ -45,6 +45,10 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (Number(players.current.value) > 18) {
+      alert("Only up to 18 players please!")
+      return;
+    }
 
     setBracketDetails({
       tournamentName: tournament.current.value,
@@ -224,6 +228,7 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
         <Button
           type="submit"
           variant="contained"
+          style={{display: "flex", flexDirection: "column"}}
           onClick={(event) => {
             handleTournament(event);
           }}

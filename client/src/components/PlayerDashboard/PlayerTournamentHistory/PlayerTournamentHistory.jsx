@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
 const PlayerTournamentHistory = ({userData}) => {
   console.log('props:', userData);
 
-  const [playerName, setPlayerName] = useState('rapwnzel');
   const classes = useStyles();
 
   return (
