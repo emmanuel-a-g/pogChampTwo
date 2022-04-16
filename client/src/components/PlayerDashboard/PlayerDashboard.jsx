@@ -16,6 +16,7 @@ const useStyles = makeStyles({
   root: {
     maxWidth: 345,
     display: 'flex',
+    backgroundColor: '#ff7f29',
   },
   username: {
     textAlign: 'center',

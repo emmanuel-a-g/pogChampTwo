@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     maxWidth: 345,
-    backgroundColor: 'whitesmoke',
+    backgroundColor: '#ff7f29',
   },
   media: {
     height: 140,
@@ -41,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     height: 300,
     width: 400,
-    backgroundColor: 'whitesmoke',
+    backgroundColor: '#ff7f29',
+    marginRight: '-70px',
   },
 }))
 

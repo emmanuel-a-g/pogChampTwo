@@ -256,7 +256,6 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
 .MuiCard-root {
   width: 400px;
   height: 300px;
-  background: orange;
 }
 
 @media only screen and (max-width: 800px) {
