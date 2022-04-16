@@ -46,7 +46,7 @@ const tournaments = [
     location: "Card Den"
   },
   {
-    name: "???",
+    name: "Resident Evil",
     location: "Josh's Basement"
   },
   {
