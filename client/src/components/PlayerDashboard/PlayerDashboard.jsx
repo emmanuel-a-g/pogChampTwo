@@ -22,7 +22,8 @@ const useStyles = makeStyles({
     textAlign: 'center',
   },
   media: {
-    height: 140,
+    height: 228,
+    objectFit: 'cover',
   },
   big: {
     color: 'black',

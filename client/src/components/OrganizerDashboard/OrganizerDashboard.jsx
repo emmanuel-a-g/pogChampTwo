@@ -30,7 +30,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#ff7f29',
   },
   media: {
-    height: 140,
+    height: 228,
+    objectFit: 'cover',
   },
   username: {
     textAlign: 'center',
@@ -42,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
     height: 300,
     width: 400,
     backgroundColor: '#ff7f29',
-    marginRight: '-70px',
   },
 }))
 
