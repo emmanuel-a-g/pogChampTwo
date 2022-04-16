@@ -9,14 +9,23 @@ body {
 hr {
   border-color: #ff7f28;
 }
-p, span, h1, h2, h3, h4, h5 {
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5 {
   color: #eeeeee;
 }
-#root .MuiTableCell-head, #root .MuiFormLabel-root, #root .MuiTableCell-body, #root .MuiInputBase-input {
+#root .MuiTableCell-head,
+#root .MuiFormLabel-root,
+#root .MuiTableCell-body,
+#root .MuiInputBase-input {
   color: #eeeeee;
 }
 #root .MuiInput-underline:before {
-  border-bottom-color: #848484!important;
+  border-bottom-color: #848484 !important;
 }
 #root .MuiTableCell-root {
   border-bottom-color: #47484c;
@@ -24,7 +33,8 @@ p, span, h1, h2, h3, h4, h5 {
 #root a:hover {
   color: #fb9e5e;
 }
-#root .MuiTypography-colorPrimary, #root a {
+#root .MuiTypography-colorPrimary,
+#root a {
   color: #ff7f28;
 }
 
@@ -39,7 +49,7 @@ div#footer {
 }
 
 a:visited {
-  color: #ff7f28
+  color: #ff7f28;
 }
 
 .TournamentPaper {
@@ -142,12 +152,14 @@ div#loginContainer a {
   margin-bottom: 0;
 }
 
-#container, #sideBar, #landing {
+#container,
+#sideBar,
+#landing {
   height: 100%;
 }
 
 #root {
-  height: 100%
+  height: 100%;
 }
 
 #logo {
@@ -165,7 +177,7 @@ div#loginContainer a {
 
 #carouselText {
   /* background-color: rgba(0, 0, 0, .5); */
-  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
   color: #fff;
   position: absolute;
   width: 100%;
@@ -192,7 +204,8 @@ ul.navigation {
 ul.navigation a {
   text-decoration: none;
 }
-.MuiCard-root, .MuiCard-root h2 {
+.MuiCard-root,
+.MuiCard-root h2 {
   color: #3c3d46;
 }
 button.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
@@ -202,11 +215,13 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
   box-shadow: 2px 4px 27px -10px #ff9a56;
   background: #f58805;
 }
-#root .MuiButton-outlinedPrimary, #root .MuiButton-outlined {
+#root .MuiButton-outlinedPrimary,
+#root .MuiButton-outlined {
   color: #aa4505;
   border: 1px solid rgb(170 69 5);
 }
-#root .MuiButton-outlinedPrimary:hover, #root .MuiButton-outlined:hover {
+#root .MuiButton-outlinedPrimary:hover,
+#root .MuiButton-outlined:hover {
   border-color: #f58805;
 }
 #root .MuiFilledInput-root {
@@ -216,7 +231,10 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
   background: #ababab;
   margin-bottom: 20px;
 }
-#signup .MuiTableCell-head, #signup .MuiFormLabel-root, #signup .MuiTableCell-body, #signup .MuiInputBase-input {
+#signup .MuiTableCell-head,
+#signup .MuiFormLabel-root,
+#signup .MuiTableCell-body,
+#signup .MuiInputBase-input {
   color: #000;
 }
 #root p.MuiFormHelperText-root {
@@ -235,11 +253,16 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
   margin: 13px auto 0px;
 }
 
+.MuiCard-root {
+  width: 400px;
+  height: 300px;
+}
+
 @media only screen and (max-width: 800px) {
   body {
-    font-size: .70rem;
+    font-size: 0.7rem;
   }
   .content {
-    font-size: .70rem;
+    font-size: 0.7rem;
   }
 }
