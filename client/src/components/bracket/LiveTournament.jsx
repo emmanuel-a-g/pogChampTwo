@@ -12,15 +12,15 @@ function LiveTournament({players, prizes, live_image_url, winners}) {
   return (
     <React.Fragment>
       <h1 className="title">Bracket Tournament</h1>
-      {players.length >= 1 && <span>Instructions: click any player's name to move him up the tournament</span> }
       <br/>
       {live_image_url && players.length >= 1 &&
-      <span>
-      {players.length === 1 && <button style={styles} onClick={() => window.print()} >Print Results</button> }
-      
-      <button style={styles} onClick={(e) => openInNewTab(e) } >Print Bracket</button>
-      </span>
+        <span>
+        {players.length === 1 && <button style={styles} onClick={() => window.print()} >Print Results</button> }
+        
+        <button style={styles} onClick={(e) => openInNewTab(e) } >Print Bracket</button>
+        </span>
       }
+      {players.length >= 1 && <span>Instructions: click any player's name to move him up the tournament</span> }
 
       { players.length === 1 ?
         <div>
