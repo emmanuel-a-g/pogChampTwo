@@ -161,8 +161,8 @@ ul.navigation {
   /* background-color: pink; */
 }
 /* #navigation { */
-  /* padding: 0 20px; */
-  /* background-color: rebeccapurple; */
+/* padding: 0 20px; */
+/* background-color: rebeccapurple; */
 /* } */
 .navigation li {
   display: inline;
@@ -242,7 +242,7 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
   display: flex;
   /* background-color: royalblue; */
   width: 100%;
-  min-height: 40vh;
+  min-height: 40vh !important;
   justify-content: center;
   align-items: center;
 }
@@ -295,6 +295,64 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
   padding: 0;
   margin: 0;
 }
+#playerNameCard {
+  /* background-color: pink; */
+  min-width: 30%;
+  text-align: center;
+  border-radius: 5px;
+  border: whitesmoke 2px solid;
+}
+#nameText {
+  /* background-color: red; */
+  /* min-height: 45px; */
+  padding-top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* #playerNameCard div {
+} */
+#playerCardStats {
+  /* background-color: blue; */
+  text-align: center;
+  min-width: 30%;
+  border-radius: 5px;
+  min-height: 100%;
+  border: whitesmoke 2px solid;
+}
+#playerCardTournaments {
+  /* background-color: red; */
+  min-width: 30%;
+  text-align: center;
+  border-radius: 5px;
+  border: whitesmoke 2px solid;
+}
+#playerCardTournaments > div > h2 {
+  /* color: blueviolet; */
+  font-size: 1.1rem;
+}
+#playerContentTopHalf {
+  margin-top: 2%;
+  display: flex;
+  /* background-color: yellow; */
+  justify-content: space-evenly;
+  width: 95%;
+  max-width: 900px;
+}
+#playerContent {
+  /* background-color: #fb9e5e; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#selectorDiv {
+  /* background-color: red; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 150px;
+}
+
 @media only screen and (max-width: 650px) {
   .carouselImg {
     max-width: 300px;
@@ -316,5 +374,16 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
     width: 3.5rem;
     height: 25px;
     font-size: 0.55rem;
+  }
+  #playerContentTopHalf {
+    flex-direction: column;
+    width: 80%;
+  }
+  #playerCardStats {
+    margin: 3% 0 3% 0;
+  }
+  #playerNameCard {
+    justify-content: center;
+    align-items: center;
   }
 }
