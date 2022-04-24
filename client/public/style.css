@@ -160,10 +160,10 @@ ul.navigation {
   padding-left: 0;
   /* background-color: pink; */
 }
-#navigation {
+/* #navigation { */
   /* padding: 0 20px; */
   /* background-color: rebeccapurple; */
-}
+/* } */
 .navigation li {
   display: inline;
   margin: 0 6px;
@@ -292,6 +292,8 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0;
+  margin: 0;
 }
 @media only screen and (max-width: 650px) {
   .carouselImg {

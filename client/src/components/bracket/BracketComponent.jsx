@@ -151,7 +151,6 @@ class BracketComponent extends React.Component {
           }
           this.setState({ winners: winnersObj });
         }
-        console.log("Nothing broke so far");
 
         let filteredPlayers = players.filter(function (
           player

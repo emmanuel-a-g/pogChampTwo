@@ -8,4 +8,16 @@
   width: 100%;
   justify-content: space-between;
   margin-bottom: 15px;
+  max-height: 40px;
+}
+#buttonBracket {
+  font-size: .70rem !important;
+  margin: 5px;
+}
+@media only screen and (max-width: 800px) {
+  .divBracket {
+    flex-direction: column;
+    text-align: center;
+    align-items: space-between;
+  }
 }
