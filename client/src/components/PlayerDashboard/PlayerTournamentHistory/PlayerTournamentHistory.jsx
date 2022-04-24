@@ -1,13 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import {
-  Link,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import { Link} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import "./PlayerTournamentHistory.css";
 
 //tournament name, game, date, location, city/state, type, outcome
 // const rows = [
@@ -24,45 +18,54 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PlayerTournamentHistory = ({userData}) => {
+const PlayerTournamentHistory = ({ userData }) => {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <div id="tableHero">
       <h2 className="title">{userData.name}'s Tournament History</h2>
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell>Tournament</TableCell>
-            <TableCell>Game</TableCell>
-            <TableCell>Date</TableCell>
-            <TableCell>Location</TableCell>
-            <TableCell>Tournament Style</TableCell>
-            <TableCell align="right">Result</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {userData.name ? userData.attended.map((tournament, index) =>
-            <TableRow key={index}>
-              <TableCell>{tournament.name}</TableCell>
-              <TableCell>{tournament.game}</TableCell>
-              <TableCell>{tournament.date}</TableCell>
-              <TableCell>{tournament.location}</TableCell>
-              <TableCell>{tournament.type}</TableCell>
-              <TableCell align="right">{tournament.result ? "Won" : "Lost"}</TableCell>
-            </TableRow>
-          )
-          : null}
-        </TableBody>
-      </Table>
+      <table id="theTable">
+        <thead>
+          <tr>
+            <th>Tournament</th>
+            <th>Game</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Tournament Style</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          {userData.name
+            ? userData.attended.map((tournament, index) => (
+                <tr key={index}>
+                  <td>{tournament.name}</td>
+                  <td>{tournament.game}</td>
+                  <td>{tournament.date}</td>
+                  <td>{tournament.location}</td>
+                  <td>{tournament.type}</td>
+                  <td>
+                    {tournament.result ? "Won" : "Lost"}
+                  </td>
+                </tr>
+              ))
+            : null}
+        </tbody>
+      </table>
 
       <div className={classes.seeMore}>
-        <Link color="primary" href="#" onClick={(e) => {e.preventDefault()}}>
+        <Link
+          color="primary"
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
           See more tournaments
         </Link>
       </div>
-    </React.Fragment>
+    </div>
   );
-}
+};
 
 export default PlayerTournamentHistory;

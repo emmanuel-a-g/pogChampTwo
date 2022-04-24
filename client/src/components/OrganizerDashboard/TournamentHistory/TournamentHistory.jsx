@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Link,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow
-} from '@material-ui/core';
+import { Link} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,35 +12,35 @@ const TournamentHistory = ({userData}) => {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <div id="tableHero">
       <h2 className="title">Hosted Tournaments</h2>
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell>Tournament</TableCell>
-            <TableCell>Game</TableCell>
-            <TableCell>Tournament Style</TableCell>
-            <TableCell align="right">Winner</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
+      <table id="theTable">
+        <thead>
+          <tr>
+            <th>Tournament</th>
+            <th>Game</th>
+            <th>Tournament Style</th>
+            <th align="right">Winner</th>
+          </tr>
+        </thead>
+        <tbody>
         {userData.name ? userData.attended.map((tournament, index) =>
-          <TableRow key={index}>
-            <TableCell>{tournament.name}</TableCell>
-            <TableCell>{tournament.game}</TableCell>
-            <TableCell>{tournament.type}</TableCell>
-            <TableCell align="right">{tournament.winner ? tournament.winner : "unknown"}</TableCell>
-          </TableRow>
+          <tr key={index}>
+            <td>{tournament.name}</td>
+            <td>{tournament.game}</td>
+            <td>{tournament.type}</td>
+            <td>{tournament.winner ? tournament.winner : "unknown"}</td>
+          </tr>
         )
         : null}
-        </TableBody>
-      </Table>
+        </tbody>
+      </table>
       <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={(e) => {e.preventDefault(); console.log('Clicked once')} }>
           See more tournaments
         </Link>
       </div>
-    </React.Fragment>
+    </div>
   );
 }
 

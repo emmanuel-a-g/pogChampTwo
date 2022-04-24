@@ -5,10 +5,16 @@
 }
 
 .setup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: #191b21;
   padding: 20px;
   margin-bottom: 20px;
   background: #191b21;
+}
+.inputBracket {
+  width: 40%;
 }
 .setup-form h2 {
   margin-top: 0;
@@ -30,4 +36,18 @@
 
 .delete {
   vertical-align: text-bottom;
+}
+
+#fillOut {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#fillOut button {
+  margin-left: 10px;
+}
+@media only screen and (max-width: 800px) {
+  .inputBracket {
+    width: 90%;
+  }
 }

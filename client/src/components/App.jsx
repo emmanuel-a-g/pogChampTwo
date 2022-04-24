@@ -23,17 +23,6 @@ const App = () => {
         <div className="header">
           <Navigation handleLogin={showLogin} />
           <Login show={login} handleShow={showLogin} />
-          <ul className="navigation">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/player-dashboard">Player Dashboard</Link>
-            </li>
-            <li>
-              <Link to="/organizer-dashboard">Organizer Dashboard</Link>
-            </li>
-          </ul>
         </div>
 
         <Switch>

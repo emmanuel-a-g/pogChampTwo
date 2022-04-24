@@ -14,3 +14,16 @@
 .MuiButtonBase-root.select-style a {
   text-decoration: none;
 }
+#selectTourmanetDiv {
+  background-color: red;
+}
+.tournamentSelector {
+  background-color: aqua;
+}
+#heroOrganizer {
+  display: flex;
+  flex-direction: column;
+}
+.topHalfOrganizer {
+  background-color: burlywood;
+}
