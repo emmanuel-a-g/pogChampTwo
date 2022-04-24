@@ -15,7 +15,7 @@ const NavBar = ({ handleLogin }) => {
   return (
     <div id="navigation" className="navBar">
         <Link to="/"><img id="logo" height={width < breakpoint ? "30px" : "50px"} src={Logo} /></Link>
-        <Button  id="signinButton" onClick={() => handleLogin(true)} variant="contained">sign in/sign up</Button>
+        <Button  id="signinButton" onClick={() => handleLogin(true)} variant="contained">{width < breakpoint ? "log-in" : "sign in/sign up"}</Button>
     </div>
   )
 }
