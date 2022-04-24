@@ -101,11 +101,9 @@ function DescriptionItem(props) {
 
 function TournamentItem(props) {
   return (
-    <div style={{ backgroundColor: "inherit" }}>
-      <div style={{ display: "flex" }}>
-        <h5>{props.item.name}</h5>
+    <div id="homeBottomItem">
+        <h2>{props.item.name}</h2>
         <p>{props.item.location}</p>
-      </div>
     </div>
   );
 }

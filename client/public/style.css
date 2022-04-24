@@ -210,9 +210,10 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
 /* These are the new styles created */
 
 #carouselHomeRec {
+  position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 80vh;
+  min-height: 70vh;
   background-color: whitesmoke;
 }
 #carouselHomeDiv {
@@ -225,10 +226,11 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
 }
 #homeBottom {
   display: flex;
-  justify-content: center;
   background-color: red;
   width: 100%;
   min-height: 30vh;
+  justify-content: center;
+  align-items: center;
 }
 #carouselItem {
   width: 100%;
@@ -258,4 +260,13 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
   cursor: pointer;
   padding-top: 20px;
   padding-left: 50px;
+}
+#homeBottomItem {
+  background-color: royalblue;
+  min-width: 300px;
+  min-height: 150px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
