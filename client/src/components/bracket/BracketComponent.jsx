@@ -6,7 +6,6 @@ import {
   Tooltip,
   Typography
 } from '@material-ui/core';
-import { TurnedInTwoTone } from "@material-ui/icons";
 import BracketForm from './BracketForm.jsx';
 import LiveTournament from './LiveTournament.jsx';
 import StaticView from './StaticView.jsx';
@@ -46,7 +45,7 @@ class BracketComponent extends React.Component {
           <Tooltip
             title={
               <React.Fragment>
-                <Typography color="inherit">did I win?</Typography>
+                <Typography color="inherit">click me!</Typography>
               </React.Fragment>
             }
           >
@@ -236,9 +235,7 @@ class BracketComponent extends React.Component {
         <div>
           {players.length > 1 && view === 2 && (
             <Grid container>
-              <Grid item xs={5}>
-              </Grid>
-              <Grid container item xs={7} direction="row">
+              <Grid container item xs={12} direction="row">
                 {this.participantNameList()}
               </Grid>
             </Grid>

@@ -1,7 +1,7 @@
 import React from 'react';
+import "./LiveTournament.css";
 
 function LiveTournament({players, prizes, live_image_url, winners}) {
-  let styles = {backgroundColor: "orange", height: 25, margin: 3.5};
   let thirdPlaceAmount = Math.floor(prizes.third / 2);
   const openInNewTab = (e) => {
     e.preventDefault()
@@ -13,15 +13,16 @@ function LiveTournament({players, prizes, live_image_url, winners}) {
     <React.Fragment>
       <h1 className="title">Bracket Tournament</h1>
       <br/>
+      <div className="divBracket">
+      {players.length >= 1 && <span>instructions: click any player's name to move him up the tournament</span> }
       {live_image_url && players.length >= 1 &&
         <span>
         {players.length === 1 && <button style={styles} onClick={() => window.print()} >Print Results</button> }
-        
-        <button style={styles} onClick={(e) => openInNewTab(e) } >Print Bracket</button>
+        <button id="buttonPrint" onClick={(e) => openInNewTab(e) } >Print Bracket</button>
         </span>
       }
-      {players.length >= 1 && <span>Instructions: click any player's name to move him up the tournament</span> }
-
+      </div>
+      
       { players.length === 1 ?
         <div>
          <h3>1st: {winners.first.participant.name} ${prizes.first}</h3>
@@ -32,7 +33,7 @@ function LiveTournament({players, prizes, live_image_url, winners}) {
 
       { players.length === 0 ?
         <div style={{height: 550}}>
-          <h4 style={{color: "grey"}}>Click "Create New Tournament" above to begin!</h4>
+          <h4 style={{color: "grey", textAlign: "center"}}>Click "create-new-tournament" above to begin!</h4>
         </div> : null
       }
     </React.Fragment>
