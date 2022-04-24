@@ -1,9 +1,5 @@
 import React from 'react';
-import axios from 'axios';
-
 const SideBar = (props) => {
-
-
 
   return (
     <div id='sideBar'>
@@ -44,7 +40,7 @@ const Winners = (props) => {
 
 const Players = (props) => {
   return (
-    <div id="topplayers" className="sideBarItem">
+    <div className="sideBarItem">
       <h2 className="sideBarHeader">Top Five Players:</h2>
       <hr></hr>
       {props.players.map((player, i) => {
@@ -55,29 +51,4 @@ const Players = (props) => {
     </div>
   )
 }
-
-const earners = [
-  "Marty McFlarbnarb",
-  "Dog McStuffins",
-  "Peter Dinkalidge",
-  "Toby Flenderson",
-  "Mike Wizowski"
-]
-
-const winners = [
-  "Vladamir Putin",
-  "Bill Gates",
-  "Elon Musk",
-  "Couch McChairman",
-  "Person Personson"
-]
-
-const players = [
-  "Ron Swanson",
-  "Michael Scott",
-  "Ron Paul",
-  "Leslie Knope",
-  "Josh"
-]
-
 export default SideBar;

@@ -4,7 +4,7 @@ import {
   Container,
   Grid,
   FormControl,
-  TextField
+  TextField,
 } from "@material-ui/core";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
@@ -22,7 +22,7 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
     participants: [],
   });
 
-  const [repeat, setRepeat] = useState({repeat: false});
+  const [repeat, setRepeat] = useState({ repeat: false });
   const [max, setMax] = useState(false);
 
   const playerName = useRef(null);
@@ -33,20 +33,21 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
   const description = useRef(null);
 
   if (fillFormError && bracketDetails.name) {
-    setBracketDetails({ 
-    tournamentName: "",
-    description: "",
-    gameName: "",
-    numberOfPlayers: 0,
-    prizeAmount: 0,
-    show: false})
+    setBracketDetails({
+      tournamentName: "",
+      description: "",
+      gameName: "",
+      numberOfPlayers: 0,
+      prizeAmount: 0,
+      show: false,
+    });
     resetDone();
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (Number(players.current.value) > 18) {
-      alert("Only up to 18 players please!")
+      alert("Only up to 18 players please!");
       return;
     }
 
@@ -70,19 +71,20 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
     e.preventDefault();
 
     let incomingPlayer = playerName.current.value;
-    let repeats = playersInTournament.participants.filter(function (
-      player
-    ) {
+    let repeats = playersInTournament.participants.filter(function (player) {
       return player.name === incomingPlayer;
     });
 
-    if(repeats.length === 1) {
+    if (repeats.length === 1) {
       // alert('Player is already in the list!')
-      setRepeat({repeat: true})
+      setRepeat({ repeat: true });
     } else {
-      setRepeat({repeat: false});
+      setRepeat({ repeat: false });
       setPlayers({
-        participants: [...playersInTournament.participants, { name: incomingPlayer }],
+        participants: [
+          ...playersInTournament.participants,
+          { name: incomingPlayer },
+        ],
       });
       if (playersInTournament.participants.length === 18) {
         setMax(true);
@@ -127,7 +129,7 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
       )}
 
       <form autoComplete="off" onSubmit={handleSubmit} className="setup-form">
-      <h3 className="title">Enter Bracket Information</h3>
+        <h3 className="title">Enter Bracket Information</h3>
         <TextField
           required
           label="tournament name"
@@ -136,6 +138,7 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
           helperText="* required field"
           inputRef={tournament}
           focused
+          className="inputBracket"
         />
         <TextField
           required
@@ -143,6 +146,7 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
           variant="filled"
           size="small"
           inputRef={game}
+          className="inputBracket"
         />
         <TextField
           required
@@ -151,6 +155,7 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
           size="small"
           type="number"
           inputRef={players}
+          className="inputBracket"
         />
         <TextField
           required
@@ -159,6 +164,7 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
           size="small"
           type="number"
           inputRef={prize}
+          className="inputBracket"
         />
         <TextField
           required
@@ -166,8 +172,14 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
           variant="filled"
           size="small"
           inputRef={description}
+          className="inputBracket"
         />
-        <Button type="submit" variant="contained" disabled={bracketDetails.show ? true : false}>
+        <Button
+          className="inputBracket"
+          type="submit"
+          variant="contained"
+          disabled={bracketDetails.show ? true : false}
+        >
           Submit
         </Button>
       </form>
@@ -176,9 +188,13 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
         autoComplete="off"
         onSubmit={handleAddingPlayers}
         className="setup-form"
-        >
-        {repeat.repeat === false ? null : <div>This player is already in the list!</div>}
-        {max ? <span>Maximum players reached, delete or start tournament</span> : null}
+      >
+        {repeat.repeat === false ? null : (
+          <div>This player is already in the list!</div>
+        )}
+        {max ? (
+          <span>Maximum players reached, delete or start tournament</span>
+        ) : null}
         <TextField
           required
           type="text"
@@ -187,6 +203,8 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
           size="small"
           helperText="Minimum of 4 Players Required"
           inputRef={playerName}
+          inputProps={{ maxLength: 16 }}
+          className="inputBracket"
         />
         <Button type="submit" variant="contained" disabled={max ? true : false}>
           Add Player
@@ -209,13 +227,16 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
             {playersInTournament.participants.map((player, i) => {
               return (
                 <Grid item xs={3} key={i}>
-                  <h4>{player.name} <DeleteForeverIcon
-                    className="delete"
-                    fontSize="small"
-                    onClick={(e) => {
-                      deletePlayers(e, player.name);
-                    }}
-                  /></h4>
+                  <h4>
+                    {player.name}
+                    <DeleteForeverIcon
+                      className="delete"
+                      fontSize="small"
+                      onClick={(e) => {
+                        deletePlayers(e, player.name);
+                      }}
+                    />
+                  </h4>
                 </Grid>
               );
             })}
@@ -223,29 +244,30 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
         </div>
       )}
       <form noValidate autoComplete="off" className="setup-form">
-        {playersInTournament.participants.length >= 4
-        ?
-        <Button
-          type="submit"
-          variant="contained"
-          style={{display: "flex", flexDirection: "column"}}
-          onClick={(event) => {
-            handleTournament(event);
-          }}
-        >
-          Start Tournament
-        </Button>
-        :
-        <span style={{display: "flex", flexDirection: "column"}}>Please fill out!
-        <Button type="submit" variant="outlined" disabled>
-        Start Tournament
-        </Button>
-        </span>
-      }
+        {playersInTournament.participants.length >= 4 ? (
+          <span>
+            <Button
+              type="submit"
+              variant="contained"
+              style={{ display: "flex", flexDirection: "column" }}
+              onClick={(event) => {
+                handleTournament(event);
+              }}
+            >
+              Start Tournament
+            </Button>
+          </span>
+        ) : (
+          <span id="fillOut" style={{color: "red"}}>
+            Please fill out:
+            <Button type="submit" variant="outlined" disabled>
+              Start Tournament
+            </Button>
+          </span>
+        )}
       </form>
     </Container>
   );
 };
 
 export default BracketForm;
-

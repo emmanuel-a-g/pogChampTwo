@@ -1,0 +1,23 @@
+#buttonPrint {
+  box-shadow: 2px 4px 27px -10px #ff9a56;
+  border-radius: 5px;
+  background: #f58805; 
+}
+.divBracket {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  max-height: 40px;
+}
+#buttonBracket {
+  font-size: .70rem !important;
+  margin: 5px;
+}
+@media only screen and (max-width: 800px) {
+  .divBracket {
+    flex-direction: column;
+    text-align: center;
+    align-items: space-between;
+  }
+}
