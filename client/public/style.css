@@ -106,18 +106,8 @@ div#loginContainer a {
   display: block;
 }
 
-.carouselItem {
-  width: 100%;
-  height: inherit;
-  position: relative;
-  z-index: 1;
-}
-
 .carousel-inner-text {
-  position: absolute;
   bottom: 0;
-  padding: 20px 20px 40px;
-  max-width: 50%;
 }
 
 .static {
@@ -127,19 +117,6 @@ div#loginContainer a {
 .sideBarItem {
   height: auto;
   margin-bottom: 36px;
-}
-
-.carouselImg {
-  width: 100%;
-  height: auto;
-  z-index: 2;
-  position: relative;
-}
-.CarouselItem h4 {
-  color: #ff7f29;
-  font-size: 28px;
-  text-transform: uppercase;
-  margin-bottom: 0;
 }
 
 #container, #sideBar, #landing {
@@ -162,19 +139,6 @@ div#loginContainer a {
   height: 25px;
   font-size: 0.55rem;
 }
-
-#carouselText {
-  /* background-color: rgba(0, 0, 0, .5); */
-  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-  color: #fff;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  cursor: pointer;
-  padding: 15px;
-}
-
 .footer {
   height: 50px;
 }
@@ -242,4 +206,56 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
   .content {
     font-size: .70rem;
   }
+}
+/* These are the new styles created */
+
+#carouselHomeRec {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  background-color: whitesmoke;
+}
+#carouselHomeDiv {
+  display: flex;
+  background-color: royalblue;
+  width: 100%;
+  min-height: 40vh;
+  justify-content: center;
+  align-items: center;
+}
+#homeBottom {
+  display: flex;
+  justify-content: center;
+  background-color: red;
+  width: 100%;
+  min-height: 30vh;
+}
+#carouselItem {
+  width: 100%;
+  background-color: pink;
+  position: relative;
+  z-index: 1;
+}
+
+#carouselItem h4 {
+  color: #ff7f29;
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.carouselImg {
+  min-width: 700px;
+  max-height: 500px;
+  z-index: 1;
+  position: relative;
+}
+
+#carouselText {
+  /* background-color: rgba(0, 0, 0, .5); */
+  /* background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); */
+  position: absolute;
+  z-index: 2;
+  cursor: pointer;
+  padding-top: 20px;
+  padding-left: 50px;
 }

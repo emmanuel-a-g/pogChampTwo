@@ -1,9 +1,5 @@
 import React from 'react';
-import axios from 'axios';
-
 const SideBar = (props) => {
-
-
 
   return (
     <div id='sideBar'>
