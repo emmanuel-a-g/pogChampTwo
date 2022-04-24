@@ -256,8 +256,9 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
 }
 #carouselItem {
   width: 100%;
+  min-height: 40vh;
   /* background-color: pink; */
-  position: relative;
+  position: static;
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -294,6 +295,7 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
   justify-content: center;
   padding: 0;
   margin: 0;
+  border: whitesmoke 2px solid;
 }
 #playerNameCard {
   /* background-color: pink; */
@@ -385,5 +387,9 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
   #playerNameCard {
     justify-content: center;
     align-items: center;
+  }
+  #homeBottomItem {
+    min-height: 10vh;
+    min-width: 200px;
   }
 }
