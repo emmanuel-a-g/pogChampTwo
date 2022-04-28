@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CardContent, CardMedia, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PlayerTournamentHistory from "./PlayerTournamentHistory/PlayerTournamentHistory.jsx";
+import image from "../../mario_brosSmall.png"
 
 const useStyles = makeStyles({
   root: {
@@ -73,7 +74,7 @@ const PlayerDashboard = ({ yourName }) => {
         <div id="playerNameCard">
           <CardMedia
             className={classes.media}
-            image="https://cdn.gamer-network.net/2019/usgamer/Smash-Ultimate-Header-10.jpg/EG11/thumbnail/1920x1080/format/jpg/quality/65/super-smash-bros-ultimate-review-12072018.jpg"
+            image={image}
             title="Super Smash Bros"
           />
           <div id="nameText">
