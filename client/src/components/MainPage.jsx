@@ -1,8 +1,8 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-import one from "../mario_bros.png";
-import two from "../legends.png";
-import three from "../guns.png";
+import one from "../mario_brosSmall.png";
+import two from "../legendsSmall.png";
+import three from "../gunsSmall.png";
 
 
 const description = [
@@ -100,6 +100,8 @@ function DescriptionItem(props) {
       <img
         className="carouselImg"
         src={props.item.url}
+        width="700"
+        height="394"
       />
     </div>
   );

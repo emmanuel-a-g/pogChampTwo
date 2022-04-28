@@ -1,21 +1,11 @@
-import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Container,
-  Grid,
-  Typography,
-} from "@material-ui/core";
+import React, { useState } from "react";
+import { Button, CardMedia } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import TournamentHistory from "./TournamentHistory/TournamentHistory.jsx";
+import image from "../../legendsSmall.png"
 import "./OrganizerDashboard.css";
 import "./TournamentHistory/TournamentHistory.css";
-import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -93,13 +83,11 @@ const OrganizerDashboard = ({ yourName }) => {
         <div id="playerNameCard">
           <CardMedia
             className={classes.media}
-            image="https://blog.playstation.com/tachyon/2019/11/ow2-featured.jpg?resize=1088,612&crop_strategy=smart&zoom=1"
+            image={image}
             title="Super Smash Bros"
           />
           <div id="nameText">
-            <h3
-              className={classes.username}
-            >
+            <h3 className={classes.username}>
               {userData.name ? userData.name : null}
             </h3>
           </div>

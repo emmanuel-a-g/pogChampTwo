@@ -1,30 +1,44 @@
 .swissPairing {
-  margin: 30px 0;
-  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
-.setup-form {
-  border: #191b21;
-  padding: 20px;
-  margin-bottom: 20px;
-  background: #191b21;
+.swissSetupForm{
+  display: flex;
+  min-width: 50%;
+  min-height: 320px;
+  flex-direction: column;
+  /* border: 2px #191b21 solid; */
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 3px;
+  background-color: #191b21;
+  padding: 5%;
 }
-.setup-form h2 {
+button.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
+  max-width: 60%;
+}
+.swissTextField {
+  /* background-color: black; */
+  width: 60%;
+}
+.swissSetupForm h2 {
   margin-top: 0;
 }
 .swiss-player {
   padding: 10px;
   background: #272a33;
-  margin: 5px 0;
 }
-.setup-form .MuiFormControl-root, .setup-form .MuiButton-contained {
-  margin: 5px;
-}
+
 .pairings-container {
+  margin-top: 20px;
   padding: 20px;
   background: #15171d;
   color: #f3f3f3;
   text-align: center;
   outline: 2px solid #3166c7;
+  width: 70%;
 }
 .MuiButton-containedPrimary.create-pairings {
   color: #fff;
@@ -32,8 +46,10 @@
   margin: 0 auto;
   display: block;
   margin-bottom: 35px;
-  font-size: 25px;
+  font-size: .90rem;
+  margin-top: 20px;
 }
+
 .swissPairing .MuiButton-outlined.round-progress {
   display: block;
   margin: 20px auto 0;
@@ -68,4 +84,13 @@ form.input-score .MuiTextField-root {
 }
 .swiss-players .MuiTableCell-root {
   border-bottom: 1px solid rgb(76 76 76);
+}
+
+@media only screen and (max-width: 800px) {
+  .swissSetupForm {
+    width: 80%
+  } 
+  .swissTextField {
+    width: 90%;
+  }
 }

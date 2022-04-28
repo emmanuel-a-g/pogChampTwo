@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Grid, Paper, Modal } from '@material-ui/core';
-import Drawer from '@material-ui/core/Drawer';
-import Toolbar from '@material-ui/core/Toolbar';
+import { Container, Grid } from '@material-ui/core';
 import MainPage from './MainPage.jsx';
 import SideBar from './SideBar.jsx';
 import axios from 'axios';
