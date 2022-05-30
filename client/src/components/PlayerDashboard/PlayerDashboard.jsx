@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CardContent, CardMedia, Typography } from "@material-ui/core";
+import { CardMedia } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PlayerTournamentHistory from "./PlayerTournamentHistory/PlayerTournamentHistory.jsx";
 import image from "../../mario_brosSmall.png"
