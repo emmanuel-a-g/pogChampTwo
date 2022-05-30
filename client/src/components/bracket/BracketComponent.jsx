@@ -219,7 +219,6 @@ class BracketComponent extends React.Component {
   render() {
     let view = this.state.view;
     let players = this.state.players;
-    console.log(window.location.protocol);
     return (
       <Container maxWidth="lg" className="bracketForm">
         <StaticView changeView={this.changeView} />
