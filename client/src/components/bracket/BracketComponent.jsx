@@ -219,6 +219,7 @@ class BracketComponent extends React.Component {
   render() {
     let view = this.state.view;
     let players = this.state.players;
+    console.log(window.location.protocol);
     return (
       <Container maxWidth="lg" className="bracketForm">
         <StaticView changeView={this.changeView} />
@@ -242,7 +243,7 @@ class BracketComponent extends React.Component {
         </div>
         {this.state.showIframe && this.state.liveUrl ? (
           <iframe
-            src={`http://challonge.com/${this.state.liveUrl}/module${iframeoptions}`}
+            src={`${window.location.protocol}//challonge.com/${this.state.liveUrl}/module${iframeoptions}`}
             width="100%"
             height="550"
             frameBorder="0"
