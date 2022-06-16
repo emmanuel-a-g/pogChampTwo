@@ -240,8 +240,10 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
   min-height: 40vh !important;
   justify-content: center;
   align-items: center;
+  /* border: 10px #ff7f28 solid; */
 }
 #homeBottom {
+  margin-top: 5vh;
   display: flex;
   width: 100%;
   min-height: 30vh;
@@ -256,21 +258,20 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
+  height: 100%;
 }
-
 #carouselItem h4 {
   color: #ff7f29;
   font-size: 28px;
   text-transform: uppercase;
 }
-
 .carouselImg {
   min-width: 700px;
   max-height: 500px;
   z-index: 1;
   position: relative;
 }
-
 #carouselText {
   /* background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); */
   position: absolute;
