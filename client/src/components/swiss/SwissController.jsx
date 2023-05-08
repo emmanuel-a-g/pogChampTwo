@@ -164,7 +164,6 @@ const SwissController = (props) => {
     }
 
     setPairs(newPairs);
-
     if (gameDetails.currentRound <= Number(gameDetails.rounds)) {
       gameDetails.currentRound++;
     }
@@ -308,7 +307,7 @@ const SwissController = (props) => {
           <p>At least 2 players to start: </p>
           {gameDetails.winner.length >= 1 && (
             <Button
-              variant="filled"
+              variant="contained"
               type="submit"
               onClick={() => window.print()}
             >
@@ -346,16 +345,16 @@ const SwissController = (props) => {
           {gameDetails.winner !== "" && !Array.isArray(gameDetails.winner) ? (
             <Container maxWidth="sm" className="pairings-container">
               <h2>
-                {gameDetails.winner} wins ${money.first}!
+                {gameDetails.winner} wins #1 place {money.first}!
               </h2>
               {winners.second && (
                 <h2>
-                  {winners.second} ${money.second}!
+                  {winners.second} wins #2 place {money.second}!
                 </h2>
               )}
               {winners.third && (
                 <h2>
-                  {winners.third} ${money.third}!
+                  {winners.third} {money.third}!
                 </h2>
               )}
             </Container>
