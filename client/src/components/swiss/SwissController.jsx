@@ -238,7 +238,7 @@ const SwissController = (props) => {
   // <Button onClick={resetPage} variant="contained" color="primary">Reset?</Button>
 
   return (
-    <div maxWidth="lg" className="swissPairing">
+    <div className="swissPairing">
       <h2>Swiss Tournament</h2>
       <div className="game-details">
         {gameDetails.tournamentName ? (
