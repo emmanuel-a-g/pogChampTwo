@@ -4,15 +4,16 @@ import {
   Container,
   Grid,
   Tooltip,
-  Typography
-} from '@material-ui/core';
-import BracketForm from './BracketForm.jsx';
-import LiveTournament from './LiveTournament.jsx';
-import StaticView from './StaticView.jsx';
+  Typography,
+} from "@material-ui/core";
+import BracketForm from "./BracketForm.jsx";
+import LiveTournament from "./LiveTournament.jsx";
+import StaticView from "./StaticView.jsx";
 import axios from "axios";
-import './BracketForm.css';
+import "./BracketForm.css";
 
-const iframeoptions = '?show_tournament_name=1&show_final_results=1&show_standings=1&scale_to_fit=1';
+const iframeoptions =
+  "?show_tournament_name=1&show_final_results=1&show_standings=1&scale_to_fit=1";
 
 class BracketComponent extends React.Component {
   constructor() {
@@ -20,15 +21,15 @@ class BracketComponent extends React.Component {
     this.state = {
       view: 0,
       players: [],
-      liveUrl: '',
+      liveUrl: "",
       currentTournament: {},
       tournamentId: undefined,
       matchId: undefined,
       participantId: undefined,
       showIframe: false,
       prizeAmount: {},
-      winners: { "first": {}, "second": {}, "third": [] },
-      live_image_url: '',
+      winners: { first: {}, second: {}, third: [] },
+      live_image_url: "",
       fillFormError: false,
     };
 
@@ -39,22 +40,35 @@ class BracketComponent extends React.Component {
   }
 
   participantNameList() {
-    return (
-      this.state.players.map((player, index) => {
-        return <Grid item xs={3} key={index}>
+    return this.state.players.map((player, index) => {
+      return (
+        <Grid item xs={3} key={index}>
           <Tooltip
             title={
               <React.Fragment>
-                <Typography color="inherit">click me!</Typography>
+                <Typography color="inherit">Click to move!</Typography>
               </React.Fragment>
             }
           >
-            <Button onClick={() => { this.updateMatchWinner(player["participant"]["id"]) }} fullWidth>{player["participant"]["name"]}</Button>
+            <Button
+              onClick={() => {
+                this.updateMatchWinner(player["participant"]["id"]);
+              }}
+              style={{
+                borderWidth: "1px",
+                borderStyle: "solid",
+                borderColor: "#ff7f28",
+                margin: "5px",
+                width: "80%",
+              }}
+            >
+              {player["participant"]["name"]}
+            </Button>
           </Tooltip>
         </Grid>
-      })
-    )
-  };
+      );
+    });
+  }
 
   createTournament(tournamentInfo = null, players = null) {
     let data = {
@@ -65,16 +79,17 @@ class BracketComponent extends React.Component {
       },
       form: {
         date: new Date().toString(),
-        type: 'bracket',
+        type: "bracket",
         hostName: this.state.username,
         playerLimit: tournamentInfo.numberOfPlayers,
         registered: [],
         totalPrize: tournamentInfo.prizeAmount,
-        winner: null
-      }
+        winner: null,
+      },
     };
 
-    axios.post("/api/createTournament", data)
+    axios
+      .post("/api/createTournament", data)
       .then((res) => {
         this.setState({
           liveUrl: res.data.tournament.url,
@@ -91,7 +106,8 @@ class BracketComponent extends React.Component {
 
   postNewParticipants(participants) {
     participants.tournamentId = this.state.tournamentId;
-    axios.post("/api/postParticipant", participants)
+    axios
+      .post("/api/postParticipant", participants)
       .then((res) => {
         this.setState({ players: res.data });
         this.startMatch();
@@ -100,50 +116,56 @@ class BracketComponent extends React.Component {
         if (err.message) {
           this.setState({
             fillFormError: true,
-          })
+          });
         }
         console.log(err);
       });
   }
 
   startMatch() {
-    axios.post("/api/startTournament", { tournamentId: this.state.tournamentId })
+    axios
+      .post("/api/startTournament", { tournamentId: this.state.tournamentId })
       .then((res) => {
-        this.setState({ showIframe: true, view: 2 })
+        this.setState({ showIframe: true, view: 2 });
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
-  startTournament( tournamentInfo, participantInfo ) {
+  startTournament(tournamentInfo, participantInfo) {
     console.log("Start Tournament:", tournamentInfo, participantInfo);
-    this.createTournament(tournamentInfo, participantInfo)
+    this.createTournament(tournamentInfo, participantInfo);
 
     let prize = {
-      first: Math.floor(tournamentInfo.prizeAmount * .50),
-      second: Math.floor(tournamentInfo.prizeAmount * .30),
-      third: Math.floor(tournamentInfo.prizeAmount * .20),
-    }
+      first: Math.floor(tournamentInfo.prizeAmount * 0.5),
+      second: Math.floor(tournamentInfo.prizeAmount * 0.3),
+      third: Math.floor(tournamentInfo.prizeAmount * 0.2),
+    };
 
     this.setState({ prizeAmount: prize }, () => {
-      console.log('prizeAmount:', this.state.prizeAmount);
+      console.log("prizeAmount:", this.state.prizeAmount);
     });
   }
 
   updateMatchWinner(id = null) {
-    axios.post(`/api/updateMatch`, {
-      tournament_id: this.state.tournamentId,
-      participant_id: id,
-    })
+    axios
+      .post(`/api/updateMatch`, {
+        tournament_id: this.state.tournamentId,
+        participant_id: id,
+      })
       .then((res) => {
         let deletePlayer = res.data.loserId;
         let players = this.state.players;
         let winnersObj = this.state.winners;
-        if (players.length === 3 || players.length === 2 ||
-          players.length === 4) {
-          let playerObj = players.find((player) =>
-            player["participant"]["id"] === deletePlayer);
+        if (
+          players.length === 3 ||
+          players.length === 2 ||
+          players.length === 4
+        ) {
+          let playerObj = players.find(
+            (player) => player["participant"]["id"] === deletePlayer
+          );
           if (players.length === 2) {
             winnersObj["second"] = playerObj;
           } else {
@@ -152,35 +174,38 @@ class BracketComponent extends React.Component {
           this.setState({ winners: winnersObj });
         }
 
-        let filteredPlayers = players.filter(function (
-          player
-        ) {
+        let filteredPlayers = players.filter(function (player) {
           return player["participant"]["id"] !== deletePlayer;
         });
         if (filteredPlayers.length === 1) {
           let firstPlace = filteredPlayers[0];
           winnersObj["first"] = firstPlace;
           this.finalizeTournament();
-          this.setState({ players: filteredPlayers, showIframe: false, winners: winnersObj });
+          this.setState({
+            players: filteredPlayers,
+            showIframe: false,
+            winners: winnersObj,
+          });
         } else {
           this.setState({
             players: filteredPlayers,
-          })
+          });
         }
       })
       .catch((err) => {
-        console.log(err)
-      })
+        console.log(err);
+      });
   }
 
   finalizeTournament() {
     let id = this.state.tournamentId;
-    axios.put('/api/finalizeTournament', { "tournamentId": id })
+    axios
+      .put("/api/finalizeTournament", { tournamentId: id })
       .then((res) => {
         // console.log("Finalized tournament");
         this.setState({ view: 2, showIframe: true }, () => {
           // console.log(this.state.winners, this.state.prizeAmount, "new");
-        })
+        });
       })
       .then(() => {
         let money = this.state.prizeAmount;
@@ -189,17 +214,22 @@ class BracketComponent extends React.Component {
         winnings[this.state.winners.second.participant.name] = money.second;
         winnings[this.state.winners.third[0].participant.name] = money.third;
 
-        axios.post('/api/declareWinner', { tournamentId: this.state.tournamentId, username: this.state.players[0]["participant"]["name"], winnings: winnings })
+        axios
+          .post("/api/declareWinner", {
+            tournamentId: this.state.tournamentId,
+            username: this.state.players[0]["participant"]["name"],
+            winnings: winnings,
+          })
           .then((data) => {
             console.log(data);
           })
           .catch((err) => {
             console.log(err);
-          })
+          });
       })
       .catch((err) => {
         console.log("error:", err);
-      })
+      });
   }
 
   changeView(view = null) {
@@ -212,8 +242,8 @@ class BracketComponent extends React.Component {
 
   resetDone() {
     this.setState({
-      fillFormError: false
-    })
+      fillFormError: false,
+    });
   }
 
   render() {
@@ -223,13 +253,21 @@ class BracketComponent extends React.Component {
       <Container maxWidth="lg" className="bracketForm">
         <StaticView changeView={this.changeView} />
 
-        {view === 0 && <BracketForm
-          className="bracketForm"
-          startTournament={this.startTournament}
-          fillFormError={this.state.fillFormError}
-        />}
-        {view === 2 && <LiveTournament players={players} prizes={this.state.prizeAmount}
-          winners={this.state.winners} live_image_url={this.state.live_image_url} />}
+        {view === 0 && (
+          <BracketForm
+            className="bracketForm"
+            startTournament={this.startTournament}
+            fillFormError={this.state.fillFormError}
+          />
+        )}
+        {view === 2 && (
+          <LiveTournament
+            players={players}
+            prizes={this.state.prizeAmount}
+            winners={this.state.winners}
+            live_image_url={this.state.live_image_url}
+          />
+        )}
 
         <div>
           {players.length > 1 && view === 2 && (
@@ -245,8 +283,6 @@ class BracketComponent extends React.Component {
             src={`${window.location.protocol}//challonge.com/${this.state.liveUrl}/module${iframeoptions}`}
             width="100%"
             height="550"
-            frameBorder="0"
-            scrolling="auto"
           ></iframe>
         ) : null}
       </Container>

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./LiveTournament.css";
 import { Button } from "@material-ui/core";
 
@@ -21,7 +21,7 @@ function LiveTournament({ players, prizes, live_image_url, winners }) {
       <div className="divBracket">
         {players.length === total && (
           <span>
-            Instructions: click any player's name to move him up the tournament
+            Instructions: click player's name to move him up the bracket
           </span>
         )}
         {live_image_url && players.length >= 1 && (
@@ -56,11 +56,14 @@ function LiveTournament({ players, prizes, live_image_url, winners }) {
             1st: {winners.first.participant.name.toUpperCase()} ${prizes.first}
           </h3>
           <h3>
-            2nd: {winners.second.participant.name.toUpperCase()} ${prizes.second}
+            2nd: {winners.second.participant.name.toUpperCase()} $
+            {prizes.second}
           </h3>
           <h3>
-            3rd: {winners.third[0].participant.name.toUpperCase()} ${thirdPlaceAmount} AND{" "}
-            {winners.third[1].participant.name.toUpperCase()} ${thirdPlaceAmount}
+            3rd: {winners.third[0].participant.name.toUpperCase()} $
+            {thirdPlaceAmount} AND{" "}
+            {winners.third[1].participant.name.toUpperCase()} $
+            {thirdPlaceAmount}
           </h3>
         </div>
       ) : null}

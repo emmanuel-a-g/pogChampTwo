@@ -114,6 +114,7 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
       startTournament(bracketDetails, playersInTournament);
     }
   };
+  console.log("Players in tournament: ", playersInTournament);
 
   return (
     <Container maxWidth="lg" className="bracketForm">
@@ -243,29 +244,19 @@ const BracketForm = ({ startTournament, fillFormError, resetDone }) => {
           </Grid>
         </div>
       )}
-      <form noValidate autoComplete="off" className="setup-form">
-        {playersInTournament.participants.length >= 4 ? (
-          <span>
-            <Button
-              type="submit"
-              variant="contained"
-              style={{ display: "flex", flexDirection: "column" }}
-              onClick={(event) => {
-                handleTournament(event);
-              }}
-            >
-              Start Tournament
-            </Button>
-          </span>
-        ) : (
-          <span id="fillOut" style={{color: "red"}}>
-            Please fill out:
-            <Button type="submit" variant="outlined" disabled>
-              Start Tournament
-            </Button>
-          </span>
-        )}
-      </form>
+      <div className="setup-form">
+        <Button
+          type="submit"
+          variant="contained"
+          style={{ display: "flex", flexDirection: "column" }}
+          onClick={(event) => {
+            handleTournament(event);
+          }}
+          disabled={playersInTournament.participants.length < 4}
+        >
+          Start Tournament
+        </Button>
+      </div>
     </Container>
   );
 };
