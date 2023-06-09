@@ -1,14 +1,13 @@
-import React from 'react';
+import React from "react";
 const SideBar = (props) => {
-
   return (
-    <div id='sideBar'>
-      <Earners earners={props.topInfo.earners}/>
-      <Winners winners={props.topInfo.winners}/>
-      <Players players={props.topInfo.ratio}/>
+    <div id="sideBar">
+      <Earners earners={props.topInfo.earners} />
+      <Winners winners={props.topInfo.winners} />
+      <Players players={props.topInfo.ratio} />
     </div>
-  )
-}
+  );
+};
 
 const Earners = (props) => {
   return (
@@ -17,12 +16,14 @@ const Earners = (props) => {
       <hr></hr>
       {props.earners.map((earner, i) => {
         return (
-        <p key={i}>{earner.name}: ${earner.winnings}</p>
-        )
+          <p key={i}>
+            {earner.name}: ${earner.winnings}
+          </p>
+        );
       })}
     </div>
-  )
-}
+  );
+};
 
 const Winners = (props) => {
   return (
@@ -31,12 +32,14 @@ const Winners = (props) => {
       <hr></hr>
       {props.winners.map((winner, i) => {
         return (
-        <p key={i}>{winner.name}: {winner.wins}</p>
-        )
+          <p key={i}>
+            {winner.name}: {winner.wins}
+          </p>
+        );
       })}
     </div>
-  )
-}
+  );
+};
 
 const Players = (props) => {
   return (
@@ -45,10 +48,12 @@ const Players = (props) => {
       <hr></hr>
       {props.players.map((player, i) => {
         return (
-        <p key={i}>{player.name}: {player.wins}/{player.losses}</p>
-        )
+          <p key={i}>
+            {player.name}: {player.wins}/{player.losses}
+          </p>
+        );
       })}
     </div>
-  )
-}
+  );
+};
 export default SideBar;
