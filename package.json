@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/hratx-blue-ocean/pogchamp/issues"
   },
-  "homepage": "https://github.com/hratx-blue-ocean/pogchamp#readme",
+  "homepage": ".",
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
