@@ -18,7 +18,6 @@ app.use("/swiss", swiss);
 app.use("/", (req, res) => {
   console.log("refresh.");
   res.sendFile(path.join(DIST_DIR, "index.html"));
-  return;
 });
 
 app.listen(port, function () {
